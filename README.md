@@ -30,9 +30,10 @@ docker run --detach \
 # Restart GitLab Runner with updated image
 
 ```
-docker run -d --name gitlab-runner --restart always \
+docker run -d --name gitlab-runner --network host \
   --volume /srv/gitlab-runner/config:/etc/gitlab-runner \
   gitlab/gitlab-runner:latest
+
 ```
 # Register gitlab runner 
 
