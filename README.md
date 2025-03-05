@@ -13,21 +13,27 @@ sudo docker pull gitlab/gitlab-ce:latest
 sudo docker pull gitlab/gitlab-runner:latest
 
 # Restart GitLab with updated image
-sudo docker run --detach \
-    --hostname $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) \
-    --publish 443:443 --publish 80:80 --publish 22:22 \
-    --name gitlab \
-    --restart always \
-    --volume /srv/gitlab/config:/etc/gitlab \
-    --volume /srv/gitlab/logs:/var/log/gitlab \
-    --volume /srv/gitlab/data:/var/opt/gitlab \
-    gitlab/gitlab-ce:latest
+
+```
+docker run --detach \
+  --hostname gitlab.example.com \
+  --publish 443:443 --publish 80:80 --publish 22:22 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab \
+  --volume /srv/gitlab/logs:/var/log/gitlab \
+  --volume /srv/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+
+```
 
 # Restart GitLab Runner with updated image
-sudo docker run -d --name gitlab-runner --restart always \
-    -v /srv/gitlab-runner/config:/etc/gitlab-runner \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    gitlab/gitlab-runner:latest
+
+```
+docker run -d --name gitlab-runner --restart always \
+  --volume /srv/gitlab-runner/config:/etc/gitlab-runner \
+  gitlab/gitlab-runner:latest
+```
 
 # Restart Docker service (optional, if any issues)
 sudo systemctl restart docker
