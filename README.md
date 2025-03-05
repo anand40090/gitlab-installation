@@ -34,6 +34,20 @@ docker run -d --name gitlab-runner --restart always \
   --volume /srv/gitlab-runner/config:/etc/gitlab-runner \
   gitlab/gitlab-runner:latest
 ```
+# Register gitlab runner 
+
+```
+docker exec -it gitlab-runner gitlab-runner register
+
+You'll need the following information to register the runner:
+
+GitLab URL: The address of your GitLab instance (e.g., http://gitlab.example.com).
+GitLab registration token: Obtain it from your GitLab project under Settings > CI/CD > Runners.
+Description: The name/description of the runner.
+Tags: Optional tags to associate with the runner.
+Executor: Choose an executor (e.g., docker).
+
+```
 
 # Restart Docker service (optional, if any issues)
 sudo systemctl restart docker
