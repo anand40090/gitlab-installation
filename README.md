@@ -40,6 +40,7 @@ echo "Waiting for GitLab to initialize..."
 sleep 60  # Adjust sleep time if needed
 
 # Retrieve GitLab root user password
+```
 if [ -f "/srv/gitlab/config/initial_root_password" ]; then
     echo "GitLab Root Login Credentials:"
     echo "Username: root"
@@ -55,6 +56,9 @@ exit
 EOF
     echo "Password reset to: NewSecurePassword"
 fi
+
+
+```
 
 # Display GitLab login URL
 echo "Access GitLab at: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)/"
