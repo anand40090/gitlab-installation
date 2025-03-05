@@ -42,7 +42,7 @@ docker exec -it gitlab-runner gitlab-runner register
 
 You'll need the following information to register the runner:
 
-GitLab URL: The address of your GitLab instance (e.g., http://gitlab.example.com).
+GitLab URL: The address of your GitLab instance (e.g., http://gitlab.example.com). >> Use http://localhost:80
 GitLab registration token: Obtain it from your GitLab project under Settings > CI/CD > Runners.
 Description: The name/description of the runner.
 Tags: Optional tags to associate with the runner.
